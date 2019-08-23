@@ -29,6 +29,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Google Drive
+Icon*
+
 ### Node ###
 # Logs
 logs
