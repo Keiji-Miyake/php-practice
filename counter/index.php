@@ -12,14 +12,11 @@ $count = fgets($fp, $length);
 if(empty($count) || !is_numeric($count)){
     file_put_contents($filename, 0);
 }
-if(!$_COOKIE['access']) {
-    setcookie('access', 1, time() + 6); // 60s
-    //ファイルポインタを先頭に戻す
-    rewind($fp); // fseek($fp, 0, SEEK_SET); でもよい。 SEEK_CUR: 現在 SEEK_END: 終端
-    //ファイル書き込み
-    $count++;
-    fputs($fp, $count);
-}
+//ファイルポインタを先頭に戻す
+rewind($fp); // fseek($fp, 0, SEEK_SET); でもよい。 SEEK_CUR: 現在 SEEK_END: 終端
+//ファイル書き込み
+$count++;
+fputs($fp, $count);
 // ファイルを閉じる
 flock($fp, LOCK_UN);
 fclose($fp);
