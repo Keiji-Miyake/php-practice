@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新規登録 | スタッフ情報</title>
+</head>
+<body>
+    <main>
+        <h1>スタッフ新規登録</h1>
+        <form action="confirm.php" method="POST">
+            <dl>
+                <dt>スタッフ名</dt>
+                <dd><input name="name" type="text" style="width:200px"></dd>
+                <dt>パスワード</dt>
+                <dd><input name="pass" type="password" style="width:100px;"></dd>
+                <dt>パスワード（再入力）</dt>
+                <dd><input name="pass2" type="password" style="width:100px;"></dd>
+            </dl>
+            <div>
+                <button onclick="history.back()">戻る</button>
+                <button type="submit">OK</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

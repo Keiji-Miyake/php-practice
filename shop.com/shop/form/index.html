@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>注文</title>
+</head>
+<body>
+  <main>
+    <h1>注文フォーム</h1>
+    <p>お客様情報を入力してください。</p>
+    <form action="confirm.php" method="post">
+      <table>
+        <tr>
+          <th>お名前 </th>
+          <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td>
+            <input type="text" name="postal[]"> - <input type="text" name="postal[]">
+          </td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><input type="text" name="address"></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><input type="text" name="tel"></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label><input type="radio" name="regist" value="0" checked>今回だけ</label>
+            <label><input type="radio" name="regist" value="1">会員登録して注文</label>
+          </td>
+        </tr>
+      </table>
+      <p>※会員登録する方は以下の項目も入力してください。</p>
+      <table>
+        <tr>
+          <td colspan="2">
+            パスワードを入力してください。<br>
+            <input type="password" name="pass"><br>
+            パスワードをもう一度入力してください。<br>
+            <input type="password" name="pass2">
+          </td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td>
+            <label><input type="radio" name="sex" value="man" checked>男性</label>
+            <label><input type="radio" name="sex" value="woman">女性</label>
+          </td>
+        </tr>
+        <tr>
+          <th>生まれ年</th>
+          <td>
+            <select name="born">
+              <option value="1940">1940</option>
+              <option value="1950">1950</option>
+              <option value="1960">1960</option>
+              <option value="1970">1970</option>
+              <option value="1980" selected>1980</option>
+              <option value="1990">1990</option>
+              <option value="2000">2000</option>
+              <option value="2010">2010</option>
+            </select>年代
+          </td>
+        </tr>
+      </table>
+      <div>
+        <button type="button" onclick="history.back();">戻る</button>
+        <button type="submit">OK</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
