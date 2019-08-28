@@ -1,3 +1,6 @@
+### original ###
+vendor/
+
 ### OSX ###
 # General
 .DS_Store

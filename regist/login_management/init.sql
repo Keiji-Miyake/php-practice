@@ -1,0 +1,8 @@
+CREATE DATABASE IF NOT EXISTS login_management DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE login_management;
+CREATE TABLE users (
+user_id INT( 5 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR( 25 ) NOT NULL,
+password VARCHAR( 100 ) NOT NULL ,
+UNIQUE (name)
+);
