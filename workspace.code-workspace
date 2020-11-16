@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "../Dokugaku/server-side/part2"
+		},
+		{
+			"path": "../memo"
+		},
+		{
+			"path": "../shop"
+		},
+		{
+			"path": "."
+		}
+	],
+	"remoteAuthority": "wsl+Ubuntu",
+	"settings": {}
+}
