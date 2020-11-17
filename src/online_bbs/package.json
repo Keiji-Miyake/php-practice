@@ -1,0 +1,18 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.5.3"
+  },
+  "devDependencies": {
+    "sass": "^1.29.0"
+  },
+  "scripts": {
+    "sass": "sass --watch --style=compressed resources/scss:css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Keiji Miyake",
+  "license": "ISC"
+}

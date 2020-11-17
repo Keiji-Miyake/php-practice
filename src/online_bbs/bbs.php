@@ -1,7 +1,7 @@
 <?php
 
 // データベースに接続
-$link = mysqli_connect('db', 'dev', 'pass', 'online_bbs');
+$link = mysqli_connect('db', 'dev', 'pass', 'oneline_bbs');
 if (!$link) {
     die('データベースに接続できません：' . mysqli_connect_error());
 }
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else if (strlen($_POST['comment']) > 200) {
         $errors['comment'] = 'ひとことは200文字以内で入力してください';
     }
-    
+
     // エラーがなければ保存
     if (count($errors) === 0) {
         $name = mysqli_real_escape_string($link, $_POST['name']);
