@@ -43,10 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     )
     EOT;
         if (mysqli_query($link, $sql)) {
-            printf("%d Row inserted.\n", mysqli_affected_rows($link));
+            //printf("%d Row inserted.\n", mysqli_affected_rows($link));
+            mysqli_close($link);
+            // リダイレクトで2重送信の防止
+            header('Location: http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
         } else {
             printf("Error: %s\n", mysqli_sqlstate($link));
         }
+        mysqli_close($link);
+
     }
 } else {
     $result = mysqli_query($link, 'SELECT * FROM post;');
