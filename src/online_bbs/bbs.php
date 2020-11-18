@@ -55,43 +55,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ひとこと掲示板</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    <h1>ひとこと掲示板</h1>
-    <?php if (count($errors)) : ?>
-    <ul class="error_list">
-        <?php foreach ($errors as $error) : ?>
-            <li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li>
-        <?php endforeach; ?>
-    </ul>
-    <?php endif; ?>
-    <form action="bbs.php" method="post">
-        名前： <input type="text" name="name"><br>
-        ひとこと： <input type="text" name="comment"><br>
-        <button type="submit">送信</button>
-    </form>
+    <div class="container">
+        <header class="border-bottom my-5 pb-3">
+            <h1 class="text-center">ひとこと掲示板</h1>
+        </header>
 
-    <?php
-    // 投稿された内容を取得するSQLを作成して結果を取得
-    $sql = "SELECT * FROM `post` ORDER BY `created_at` DESC";
-    $result = mysqli_query($link, $sql);
-    ?>
+        <h2 class="text-center">ひとこと</h2>
+        <form class="border-bottom mb-5 pb-5" action="bbs.php" method="post">
+            <div class="form-group">
+                <label for="name">名前</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="山田　太郎" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">ひとこと</label>
+                <input type="text" name="comment" id="comment" class="form-control" placeholder="ひとこと" required>
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-primary" type="submit" name="register">Register</button>
+            </div>
+        </form>
 
-    <?php if ($result !== false && mysqli_num_rows($result)): ?>
-    <ul>
-        <?php while ($post = mysqli_fetch_assoc($result)) : ?>
-        <li>
-            <?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8') ?>:
-            <?php echo htmlspecialchars($post['comment'], ENT_QUOTES, 'UTF-8') ?>
-            - <?php echo htmlspecialchars($post['created_at'], ENT_QUOTES, 'UTF-8') ?>
-        </li>
-        <?php endwhile; ?>
-    </ul>
-    <?php endif; ?>
+        <?php
+        // 投稿された内容を取得するSQLを作成して結果を取得
+        $sql = "SELECT * FROM `post` ORDER BY `created_at` DESC";
+        $result = mysqli_query($link, $sql);
+        ?>
+
+        <?php if ($result !== false && mysqli_num_rows($result)) : ?>
+        <section class="list-group">
+            <?php while ($post = mysqli_fetch_assoc($result)) : ?>
+            <article class="list-group-item">
+                <header class="mb-1">
+                    <h3 class="h6 d-inline"><?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8') ?></h3> - <time class="small text-muted"><?php echo htmlspecialchars($post['created_at'], ENT_QUOTES, 'UTF-8'); ?></time>
+                </header>
+                <div class="body">
+                    <p class="m-0"><?php echo htmlspecialchars($post['comment'], ENT_QUOTES, 'UTF-8') ?></p>
+                </div>
+            </article>
+            <?php endwhile; ?>
+        </section>
+        <?php endif; ?>
+    </div>
 
     <?php
     // 取得結果を開放して接続を閉じる
@@ -99,4 +112,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_close($link);
     ?>
 </body>
+
 </html>
