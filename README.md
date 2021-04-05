@@ -1,18 +1,33 @@
-# php-practice
+## PHP MD Install
 
-PHPの練習用リポジトリ
-
-## 開発環境
-
-```shell
-docker-compose up -d
-docker-compose exec db bash
+```txt ./composer.json
+{
+    "require-dev": {
+        "phpmd/phpmd" : "@stable"
+    }
+}
 ```
 
-## register_func
+## phpmdの実行
 
-ログイン機能作成
+```shell
+# ./vendor/bin/phpmd sample.php text cleancode,codesize,controversial,design,naming,unusedcode
+# ./vendor/bin/phpmd . text cleancode,codesize,controversial,design,naming,unusedcode --suffixes php --exclude vendor
+# ./vendor/bin/phpmd . text phpmd.xml --suffixes php --exclude vendor
+# composer phpmd
+```
 
-## online_bbs
+## PHPstan
 
-書籍「パーフェクトPHP」より
+```shell
+# vendor/bin/phpstan analyse
+# vendor/bin/phpstan analyse -c phpstan.neon
+# composer phpstan
+```
+
+
+## PHPUnit
+
+```shell
+# composer phpunit
+```
